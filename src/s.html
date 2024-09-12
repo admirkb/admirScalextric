@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2D Scalextric Track</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #444;
+        }
+        canvas {
+            background-color: #222;
+            border: 2px solid #fff;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="trackCanvas"></canvas>
+    <script>
+        const canvas = document.getElementById('trackCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Set canvas size
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // Set the track style
+        ctx.strokeStyle = '#333';
+        ctx.lineWidth = 10;
+        ctx.lineCap = 'round';
+
+        // Draw the track (simple loop)
+        ctx.beginPath();
+        ctx.moveTo(100, 100);
+        ctx.lineTo(500, 100);
+        ctx.arcTo(700, 100, 700, 300, 100);
+        ctx.lineTo(700, 500);
+        ctx.arcTo(700, 700, 500, 700, 100);
+        ctx.lineTo(100, 700);
+        ctx.arcTo(50, 700, 50, 500, 100);
+        ctx.lineTo(50, 300);
+        ctx.arcTo(50, 100, 100, 100, 100);
+        ctx.stroke();
+
+        // Optional: Draw start/finish line
+        ctx.strokeStyle = '#fff';
+        ctx.lineWidth = 4;
+        ctx.beginPath();
+        ctx.moveTo(95, 95);
+        ctx.lineTo(95, 105);
+        ctx.stroke();
+    </script>
+</body>
+</html>
